@@ -49,8 +49,8 @@ class mysocket:
         bytes_recd = 0
         while bytes_recd < MSGLEN:
             chunk = self.sock.recv(min(MSGLEN - bytes_recd, 2048))
-            if chunk == '':
+            if chunk == b'':
                 raise RuntimeError("socket connection broken")
             chunks.append(chunk)
             bytes_recd = bytes_recd + len(chunk)
-        return ''.join(chunks)
+        return b''.join(chunks)
